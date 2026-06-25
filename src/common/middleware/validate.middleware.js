@@ -1,17 +1,16 @@
-import ApiError from "../utils/api-error.js"
+import ApiError from "../utils/api-error.js";
 
 //custom validator
-const validate = (Dtoclass) =>{
-    return (req, res, next) =>{
-        const {error, value} = Dtoclass.validate(req.body)
+const validate = (Dtoclass) => {
+  return (req, res, next) => {
+    const { error, value } = Dtoclass.validate(req.body);
 
-        if(errors){
-            throw ApiError.badRequest(errors.join(";"))
-        }
-
-        req.body = value
-        next()
+    if (errors) {
+      throw ApiError.badRequest(errors.join(";"));
     }
 
-}
-export default validate
+    req.body = value;
+    next();
+  };
+};
+export default validate;
